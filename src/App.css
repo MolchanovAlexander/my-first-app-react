@@ -28,6 +28,9 @@
   grid-area: c;
   background-color: rgb(20, 173, 220);
 }
+.content img {
+  width: 500px;
+}
 .content .profile-foto img {
   width: 120px;
 }
