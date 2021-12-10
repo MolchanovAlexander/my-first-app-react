@@ -9,3 +9,6 @@
 .item{
   color: white;
 }
+.item.active{
+  color: rgb(84, 99, 2);
+}
