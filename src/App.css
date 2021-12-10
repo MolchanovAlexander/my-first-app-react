@@ -8,29 +8,3 @@
   grid-template-columns: 2fr 10fr;
 }
 
-.header {
-  grid-area: h;
-
-  background: rgb(0, 255, 191);
-}
-.header img {
-  width: 50px;
-}
-.nav {
-  grid-area: n;
-  background-color: burlywood;
-  color: white;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: 22px;
-  font-style: italic;
-}
-.content {
-  grid-area: c;
-  background-color: rgb(20, 173, 220);
-}
-.content img {
-  width: 500px;
-}
-.content .profile-foto img {
-  width: 120px;
-}
