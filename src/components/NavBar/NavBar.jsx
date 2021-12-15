@@ -11,7 +11,7 @@ const NavBar = () => {
         <a>Messeges</a>
       </div>
       <div className={classes.item}>
-        <a>News guf</a>
+        <a>News gurrrf</a>
       </div>
       <div className={classes.item}>
         <a>Musik</a>
