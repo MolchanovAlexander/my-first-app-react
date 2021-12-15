@@ -1,0 +1,10 @@
+.header {
+  grid-area: h;
+  background: rgb(17, 102, 214);
+}
+.header img {
+  width: 60px;
+}
+.active{
+  border: 1px solid black;
+}

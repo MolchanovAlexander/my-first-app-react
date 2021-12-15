@@ -1,0 +1,15 @@
+.content {
+  grid-area: c;
+  background-color: rgb(20, 173, 220);
+}
+.content img {
+  width: 500px;
+}
+.profileFoto img {  
+  width: 120px;
+}
+.item{
+  color: darkolivegreen;
+}
+
+
