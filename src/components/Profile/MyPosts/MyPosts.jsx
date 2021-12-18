@@ -12,10 +12,10 @@ const MyPosts = () => {
         <textarea></textarea>
         <button>Add Post</button>
         <button>Remove Post</button>
-       <Post message='Wow you guf?' likeCount='0'/>
-       <Post message="It's Fist guf?"likeCount='5'/>
-       <Post />
-       <Post />
+       <Post message='Wow you guf?' likeCount={1}/>
+       <Post message="It's Fist guf?"likeCount={5}/>
+       <Post message='Wow you guf?' likeCount={1}/>
+       <Post message="It's Fist guf?"likeCount={5}/>
       </div>
     </div>
   );

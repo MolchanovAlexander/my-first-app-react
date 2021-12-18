@@ -3,7 +3,7 @@ import s from "./Post.module.css";
 
 const Post = ({likeCount, message}) => { 
   let [like, setLike] = React.useState(likeCount); 
-  const gufLike = ()=> setLike(like=like +1);
+  const gufLike = ()=> parseInt(setLike(like +1));
   
   return (
 
