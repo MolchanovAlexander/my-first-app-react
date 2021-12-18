@@ -2,8 +2,8 @@ import React from "react";
 import s from "./Post.module.css";
 
 const Post = ({likeCount, message}) => { 
-  const [like, setLike] = React.useState(likeCount); 
-  const gufLike = ()=> setLike(like + 1);
+  let [like, setLike] = React.useState(likeCount); 
+  const gufLike = ()=> setLike(like=like +1);
   
   return (
 
