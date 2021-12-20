@@ -5,14 +5,10 @@
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     font-size: 22px;
     font-style: italic;
-    padding: 20px;
-    border-radius: 8px;
-    margin: 2px ;
 }
-a {
+.item{
   color: white;
-  text-decoration: none;
 }
-.active{
-  color: gold;
+.item.active{
+  color: rgb(84, 99, 2);
 }
