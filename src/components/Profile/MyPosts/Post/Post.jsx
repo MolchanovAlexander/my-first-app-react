@@ -11,7 +11,7 @@ const Post = ({likeCount, message}) => {
       <img src="https://www.artmajeur.com/medias/home/3/-/3-14avka/artwork/14412113_img-20210413-112637.jpg" alt="123" />
       {message}
       <div>
-        <span onClick={gufLike}>Like{like}</span>
+        <span onClick={gufLike}> Like  {like}</span>
       </div>
      
     </div>

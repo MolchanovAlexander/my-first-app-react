@@ -1,11 +1,10 @@
 import React from "react";
 import s from "./News.module.css";
 
-
 const News = (props) => {
   
   return (
-   <div ><img src="" alt="123" />
+   <div className={s.newsItems}><img src={'src/pic/2.jpg'} alt="123" />
      My NEWS
       <div ></div>
       <div >

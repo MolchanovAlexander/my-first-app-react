@@ -1,17 +1,3 @@
-.nav {
-    grid-area: n;
-    background-color: burlywood;
-    
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    font-size: 22px;
-    font-style: italic;
-}
-.item{
-  color: white;
-}
-.item.active{
-  color: rgb(84, 99, 2);
-}
- div img{
-  width: 50px;
+.newsItems{
+  padding: 10px;
 }
