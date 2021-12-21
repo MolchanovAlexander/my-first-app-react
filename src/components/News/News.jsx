@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./News.module.css";
-import img2 from "./src/pic/2.jpg"
+import img2 from 'pic/3.jpg'
 
 const News = (props) => {
   
@@ -9,7 +9,7 @@ const News = (props) => {
      My NEWS
       <div ></div>
       <div >
-        <textarea></textarea>
+        <textarea></textarea> 
         <button>Add Post</button>
         <button>Remove Post</button>
        

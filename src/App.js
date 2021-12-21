@@ -10,14 +10,14 @@ import Music from './components/music/Music';
 import News from './components/News/News';
 import Settings from './components/Settings/Settings';
 const App = (props) => {
-  return (
+  return ( 
     
     <div className="app-wrapper">
       <Header />
       <NavBar />
       
       <div class="app-wrapper-content">
-        {/* dont working neither nor */}
+       
         <Routes>
         <Route path='/dialogs' element={<Dialogs />}/>
         <Route path='/profile' element={<Profile />}/>
