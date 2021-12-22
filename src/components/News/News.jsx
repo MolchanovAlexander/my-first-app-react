@@ -1,18 +1,20 @@
 import React from "react";
 import s from "./News.module.css";
-import img2 from 'pic/3.jpg'
+import img2 from 'pic/ilona.png'
 
 const News = (props) => {
-  
+
   return (
-   <div className={s.newsItems}><img src={img2} alt="123" />
-     My NEWS
+    <div className={ s.newsItems }>
+      My NEWS
+      <img src={ img2 } alt="123" />
+
       <div ></div>
       <div >
-        <textarea></textarea> 
+        <textarea></textarea>
         <button>Add Post</button>
         <button>Remove Post</button>
-       
+
       </div>
     </div>
   );
