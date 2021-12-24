@@ -12,5 +12,8 @@
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
 }
+.item span{
+  cursor: pointer;
+}
 
 

@@ -5,38 +5,47 @@ import { NavLink } from "react-router-dom";
 const DialogComp = (props) => {
   let path = "/dialogs/" + props.id
   return (
-    <div className={ s.dialog + ' ' + s.active }> <NavLink to={ path }>{ props.name }</NavLink></div>
+    <div className={s.dialog + ' ' + s.active}> <NavLink to={path}>{props.name}</NavLink></div>
   )
 }
 const MessageComp = (props) => {
   return (
-    <div className={ s.message }>{ props.message }</div>
+    <div className={s.message}>{props.message}</div>
   )
 }
 
 const Dialogs = (props) => {
+  let dialogData = [
+    { id: 1, name: "Gufiy" },
+    { id: 2, name: "Nykyhvir" },
+    { id: 3, name: "Dniwe" },
+    { id: 4, name: "Ilona" },
+    { id: 5, name: "Alesya" },
+    { id: 6, name: "Katya" },
+    { id: 7, name: "Sveta" }
+  ]
+
+  let messagesData = [
+    { id: 1, message: "How Guf came in to your house?" },
+    { id: 2, message: "la la la " },
+    { id: 3, message: "How Guf cam!!" },
+    { id: 4, message: "How Guf came in to" },
+    { id: 5, message: "Hello Dniwe" },
+    { id: 6, message: "H11112 came in to your ho...." },
+    { id: 7, message: "hjkk to your house?" }
+  ]
+  let dialogsElements = dialogData.map(d => <DialogComp name={d.name} id={d.id} />)
+  let messagesElements = messagesData.map(m => <MessageComp message={m.message} />)
 
   return (
     <div >
-      <div className={ s.dialogs }>
-        <div className={ s.dialogsItem }>
-          <DialogComp name="Gufiy" id={ 1 } />
-          <DialogComp name="Nykyhvir" id={ 2 } />
-          <DialogComp name="Dniwe" id={ 3 } />
-          <DialogComp name="Ilona" id={ 4 } />
-          <DialogComp name="Alesya" id={ 5 } />
-          <DialogComp name="Katya" id={ 6 } />
-          <DialogComp name="Sveta" id={ 7 } />
+      <div className={s.dialogs}>
+        <div className={s.dialogsItem}>
+          {dialogsElements}
         </div>
 
-        <div className={ s.messages }>
-          <MessageComp message="How Guf came in to your house?" />
-          <MessageComp message="la la la " />
-          <MessageComp message="How Guf cam!!" />
-          <MessageComp message="How Guf came in to" />
-          <MessageComp message="Hello Dniwe" />
-          <MessageComp message="H11112 came in to your ho...." />
-          <MessageComp message="hjkk to your house?" />
+        <div className={s.messages}>
+        {messagesElements}
         </div>
       </div>
     </div>

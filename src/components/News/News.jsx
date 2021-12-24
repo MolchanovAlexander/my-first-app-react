@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./News.module.css";
-import img2 from 'pic/ilona.png'
+import img2 from 'pic/stone.jpg'
 
 const News = (props) => {
 
