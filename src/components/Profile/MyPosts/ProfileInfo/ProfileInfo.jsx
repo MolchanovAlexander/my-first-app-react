@@ -9,7 +9,7 @@ const ProfileInfo = () => {
       <img src="https://onpape.com/data/onpape.com-75122001.jpg" alt="img" />
 
       <div className={ s.description }>
-        ava+descriptionsComp
+        ava+descriptionsComp1212
       </div>
     </div>
   )

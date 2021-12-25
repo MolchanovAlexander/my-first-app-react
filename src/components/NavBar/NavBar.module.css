@@ -1,18 +1,20 @@
 .nav {
     grid-area: n;
     background-color: burlywood;
-    
+    height: 100vh;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     font-size: 22px;
     font-style: italic;
     padding: 20px;
     border-radius: 8px;
-    margin: 2px ;
+    margin: 2px;
 }
+
 a {
-  color: white;
-  text-decoration: none;
+    color: white;
+    text-decoration: none;
 }
-.active{
-  color: gold;
+
+.active {
+    color: gold;
 }
