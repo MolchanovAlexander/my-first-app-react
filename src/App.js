@@ -13,17 +13,15 @@ const App = (props) => {
   return ( 
     
     <div className="app-wrapper">
-      <Header />
-      <NavBar />
-      
-      <div class="app-wrapper-content">
-       
+        <Header />
+        <NavBar />        
+    <div class="app-wrapper-content">    
         <Routes>
-        <Route path='/dialogs' element={<Dialogs />}/>
-        <Route path='/profile' element={<Profile />}/>
-        <Route path='/news' element={<News />}/>
-        <Route path='/music' element={<Music />}/>
-        <Route path='/settings' element={<Settings />}/>
+            <Route path='/profile' element={<Profile dataposts={props.dataposts}/>}/>
+            <Route path='/dialogs' element={<Dialogs dData={props.dData}  mData={props.mData} />}/>
+            <Route path='/news' element={<News />}/>
+            <Route path='/music' element={<Music />}/>
+            <Route path='/settings' element={<Settings />}/>
         </Routes>
       </div>
     </div>
