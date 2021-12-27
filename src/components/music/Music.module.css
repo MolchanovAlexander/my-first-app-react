@@ -1,10 +1,5 @@
-.nav {
-    grid-area: n;
-    background-color: burlywood;
-    
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    font-size: 22px;
-    font-style: italic;
+.music img{
+    max-height: 50vh;
 }
 .item{
   color: white;
