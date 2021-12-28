@@ -1,18 +1,13 @@
 .app-wrapper {
-  display: grid;
-  grid-template-areas:
-    "h h"
-    "n c";
-
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
+    display: grid;
+    grid-template-areas: "h h" "n c";
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 3fr 8fr;
 }
 
-.app-wrapper-content{
-  grid-area: c;
-  background-color: rgb(161, 170, 173);
-  border-radius: 8px;
-  margin: 2px;
- 
+.app-wrapper-content {
+    grid-area: c;
+    background-color: rgb(161, 170, 173);
+    border-radius: 8px;
+    margin: 2px;
 }
-

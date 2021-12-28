@@ -1,0 +1,7 @@
+.fullView {
+    /* width: 100px;
+    height: 150px; */
+    display: flex;
+    margin: 2px;
+    flex-wrap: wrap;
+}
