@@ -4,15 +4,13 @@ import s from "./Friend.module.css";
 
 
 const Friend = (props) => {
-
-
-	// let dialogsElements = props.dData.map(d => <DialogItem name={d.name} id={d.id} />)
-	// let messagesElements = props.mData.map(m => <MessageItem message={m.message} />)
+	let online=s.offline;
+	props.status ? online=s.online : online=s.offline;
 
 
 	return (
 		<div className={s.fullView}>
-			<div className={s.online}>
+			<div className={online}>
 
 			</div>
 			<div className={s.friend}>

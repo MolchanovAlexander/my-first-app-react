@@ -22,6 +22,21 @@
     border: 2px solid white;
 }
 
+.fullView .offline {
+    position: absolute;
+    left: 5%;
+    top: 60%;
+    width: 6px;
+    height: 6px;
+    background: rgb(89, 90, 89);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border: 2px solid white;
+}
+
 .fullView div {
     word-wrap: break-word;
     font-size: 12px;
