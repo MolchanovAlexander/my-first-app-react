@@ -1,3 +1,4 @@
+import rerender from 'render'
 let state = {
     friends: {
         friendsData: [
@@ -28,10 +29,8 @@ let state = {
             { id: 1, likeCount: 3, message: "How are guf in your house?" },
             { id: 2, likeCount: 0, message: "la la la " },
             { id: 3, likeCount: 2, message: "first Guf crtrtm!!" },
-            { id: 4, likeCount: 0, message: "Alo Guf came in to" },
-            { id: 5, likeCount: 4, message: "Hello Dniwe" },
-            { id: 6, likeCount: 0, message: "Yo nub came in to your ho...." },
-            { id: 7, likeCount: 11, message: " like dno?" }
+            { id: 4, likeCount: 0, message: "Alo Guf came in to" }
+
         ]
     },
     messages: {
@@ -55,6 +54,16 @@ let state = {
         ]
     }
 
+}
+export let addPost = (postMessage) => {
+    let newpost = {
+        id: 33,
+        likeCount: 0,
+        message: postMessage
+    }
+
+    state.profile.postsData.push(newpost);
+    rerender(state);
 }
 
 export default state;
