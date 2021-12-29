@@ -1,7 +1,7 @@
 .nav:not(.fullView) {
     grid-area: n;
     background-color: burlywood;
-    height: 100vh;
+    height: 100%;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     font-size: 22px;
     font-style: italic;

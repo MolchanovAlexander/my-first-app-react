@@ -31,7 +31,8 @@ let state = {
             { id: 3, likeCount: 2, message: "first Guf crtrtm!!" },
             { id: 4, likeCount: 0, message: "Alo Guf came in to" }
 
-        ]
+        ],
+        newPostText: "guf.com"
     },
     messages: {
         dialogData: [
@@ -55,14 +56,23 @@ let state = {
     }
 
 }
-export let addPost = (postMessage) => {
+window.state = state;
+
+export let addPost = () => {
     let newpost = {
         id: 33,
         likeCount: 0,
-        message: postMessage
+        message: state.profile.newPostText
     }
 
+
     state.profile.postsData.push(newpost);
+    state.profile.newPostText = ''
+    rerender(state);
+}
+export let updateNewPostText = (newText) => {
+
+    state.profile.newPostText = newText;
     rerender(state);
 }
 
