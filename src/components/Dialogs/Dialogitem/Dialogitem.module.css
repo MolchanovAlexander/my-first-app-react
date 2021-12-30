@@ -1,23 +1,26 @@
-.dialogs {
-   display: grid;
-   grid-template-columns: 2fr 10fr;
-   padding: 8px;
+.dialog {
+    text-shadow: 2px 2px 5px black;
+    border: 1px solid grey;
+}
 
+.dialogAva {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }
-.dialogsItems{
-  padding: 10px;
 
+.dialogAva img {
+    width: 30px;
 }
-.active{
-  color: gold;
 
+.messages {
+    padding: 10px;
 }
-.dialog{
-  text-shadow: 2px 2px 5px black;
+
+.message {
+    padding: 0;
 }
-.messages{
-  padding: 10px;
-}
-.message{
-  padding: 0;
+
+.active {
+    color: gold;
 }
