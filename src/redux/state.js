@@ -1,4 +1,6 @@
-import rerender from 'render'
+let rerender = () => {
+
+}
 let state = {
     friends: {
         friendsData: [
@@ -71,10 +73,12 @@ let state = {
 }
 window.state = state;
 
-let updateDialogsPictures = () => {
-
+export const subscribe = (observer) => {
+    rerender = observer;
 }
-export let addPost = () => {
+
+
+export const addPost = () => {
     let newpost = {
         id: 33,
         likeCount: 0,
@@ -84,12 +88,12 @@ export let addPost = () => {
 
     state.profile.postsData.push(newpost);
     state.profile.newPostText = ''
-    rerender(state);
+    rerender();
 }
-export let updateNewPostText = (newText) => {
+export const updateNewPostText = (newText) => {
 
     state.profile.newPostText = newText;
-    rerender(state);
+    rerender();
 }
 
 export default state;
