@@ -5,7 +5,9 @@ import imgMainProfile from 'pic/18.jpg'
 
 const Post = ({likeCount, message}) => { 
   let [like, setLike] = React.useState(likeCount); 
-  const gufLike = ()=> parseInt(setLike(like +1));
+  const gufLike = ()=> {
+	  	parseInt(setLike(like +1))
+	}
   
   return (
 

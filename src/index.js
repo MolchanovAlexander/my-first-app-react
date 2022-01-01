@@ -16,15 +16,15 @@ let rerender = () => {
 		<BrowserRouter>
 			<App 
 			state={store.getState()} 
-			addPost={store.addPost.bind(store)} 
-			updateNewPostText={store.updateNewPostText.bind(store)} />
+			dispatch={store.dispatch.bind(store)} 
+			 />
 		</BrowserRouter>
 		</React.StrictMode>,
     document.getElementById('root')
   );
 }
 
-rerender(store.getState());
+rerender();
 store.subscribe(rerender)
 
 // If you want to start measuring performance in your app, pass a function
