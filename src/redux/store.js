@@ -96,11 +96,6 @@ let store = {
         this._state.profile.newPostText = ''
         this._callSubscriber();
     },
-    updateNewPostText(newText) {
-
-        this._state.profile.newPostText = newText;
-        this._callSubscriber();
-    },
     dispatch(action) {
 
         this._state.profile = profileReducer(this._state.profile, action);
