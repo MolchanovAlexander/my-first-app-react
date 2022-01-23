@@ -100,7 +100,7 @@ let store = {
 
         this._state.profile = profileReducer(this._state.profile, action);
         this._state.messages = messagesReducer(this._state.messages, action);
-        this._state.friends.friendsData = friendsReducer(this._state.friends.friendsData, action);
+        this._state.friends = friendsReducer(this._state.friends, action);
         this._callSubscriber(this._state);
 
 
