@@ -1,5 +1,5 @@
-const ADD_POST = 'xT';
-const UPDATE_NEW_POST_TEXT = 'xxT';
+const DELL_FRIEND = 'DELL_FRIEND';
+
 
 let initialState = {
     friendsData: [
@@ -26,17 +26,14 @@ let initialState = {
     ]
 }
 const friendsReducer = (state = initialState, action) => {
-    if (action.type === ADD_POST) {
-        let newpost = {
-            id: 33,
-            likeCount: 0,
-            message: this._state.profile.newPostText
-        }
-        state.postsData.push(newpost);
-        state.newPostText = ''
+    switch (action.type) {
+        case DELL_FRIEND:
 
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-        state.newPostText = action.newText;
+            let stateCopy = {...state }
+            stateCopy.friends = {...state.friends }
+            stateCopy.friends.friendsData = [...state.friends.friendsData];
+            stateCopy.friends.friendsData = []
+            return stateCopy;
 
     }
     return state;
