@@ -6,7 +6,9 @@ import s from "./Friend.module.scss";
 const Friend = (props) => {
 	let online=s.offline;
 	props.status ? online=s.online : online=s.offline;
-
+	let onDeleteFriend = () => {
+		props.deleteFriend();
+	  };
 
 	return (
 		<div className={s.fullView}>
@@ -17,6 +19,10 @@ const Friend = (props) => {
 				<img
 					src={props.src}
 					alt="img" />
+					<div className={s.butt}>
+						<button onClick={onDeleteFriend}>del</button>
+						<button onClick={onDeleteFriend}>del</button>
+					</div>
 
 			</div>
 			<div>
