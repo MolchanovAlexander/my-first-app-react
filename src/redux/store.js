@@ -86,16 +86,6 @@ let store = {
         this._callSubscriber = observer;
     },
 
-    addPost() {
-        let newpost = {
-            id: 33,
-            likeCount: 0,
-            message: this._state.profile.newPostText
-        }
-        this._state.profile.postsData.push(newpost);
-        this._state.profile.newPostText = ''
-        this._callSubscriber();
-    },
     dispatch(action) {
 
         this._state.profile = profileReducer(this._state.profile, action);

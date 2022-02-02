@@ -9,7 +9,8 @@ import News from './components/News/News';
 import Settings from './components/Settings/Settings';
 import FriendlistContainer from 'components/friendlist/FriendlistContainer';
 import DialogsContainer from 'components/Dialogs/DialogsContainer';
-const App = (props) => {
+import UsersContainer from 'components/Users/UsersContainer';
+const App = () => {
   return (
 
     <div className="app-wrapper">
@@ -23,6 +24,9 @@ const App = (props) => {
 
           <Route path='/dialogs'
             element={<DialogsContainer />} />
+
+          <Route path='/users'
+            element={<UsersContainer />} />
 
           <Route path='/news'
             element={<News />} />

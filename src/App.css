@@ -1,8 +1,11 @@
 .app-wrapper {
     display: grid;
-    grid-template-areas: "h h" "n c";
+    display: -ms-grid;
+    grid-template-areas: "h h""n c";
     grid-template-rows: 60px 1fr;
+    -ms-grid-rows: 60px 1fr;
     grid-template-columns: 3fr 8fr;
+    -ms-grid-columns: 3fr 8fr;
 }
 
 .app-wrapper-content {
