@@ -28,14 +28,18 @@ let initialState = {
 const friendsReducer = (state = initialState, action) => {
     switch (action.type) {
         case DELL_FRIEND:
-
+console.log(111);
             let stateCopy = {...state }
             stateCopy.friends = {...state.friends }
             stateCopy.friends.friendsData = [...state.friends.friendsData];
-            stateCopy.friends.friendsData = []
+            stateCopy.friends.friendsData =[...{ id: 11, status: 1, name: "Gufiynskay Djigurdaliya", src: 'https://images.unsplash.com/photo-1541433621554-05421e3a3e5a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8YmlraW5pfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60' },
+            { id: 12, status: 0, name: "Nykyhvir Alibabayevich", src: 'https://images.unsplash.com/photo-1583900985737-6d0495555783?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8YmlraW5pfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60' },
+            ]
             return stateCopy;
-
     }
     return state;
 }
+export const friendDeleteActionCreator = (friendId) =>
+({ type: DELL_FRIEND, id: friendId });
+
 export default friendsReducer;

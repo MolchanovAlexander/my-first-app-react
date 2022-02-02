@@ -10,7 +10,7 @@ let mapStateToProps =(state)=>{
   }
   let mapDispatchToProps=(dispatch)=>{
 	return{
-		
+	
 	}
   }
 const FriendsContainer = connect(mapStateToProps,mapDispatchToProps)(Friends)

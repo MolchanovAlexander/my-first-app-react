@@ -4,10 +4,16 @@ import s from "./Friend.module.scss";
 
 
 const Friend = (props) => {
+	
 	let online=s.offline;
+	
 	props.status ? online=s.online : online=s.offline;
+
+	
 	let onDeleteFriend = () => {
-		props.deleteFriend();
+		console.log(props)
+		let friendId = props.id;
+		props.deleteFriend(friendId);
 	  };
 
 	return (
