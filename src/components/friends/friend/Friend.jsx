@@ -11,9 +11,9 @@ const Friend = (props) => {
 
 	
 	let onDeleteFriend = () => {
-		console.log(props)
+		console.log(props.id)
 		let friendId = props.id;
-		props.deleteFriend(friendId);
+		props.del(friendId);
 	  };
 
 	return (
