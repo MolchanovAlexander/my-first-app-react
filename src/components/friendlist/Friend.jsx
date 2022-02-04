@@ -26,7 +26,8 @@ const Friend = (props) => {
 					src={props.src}
 					alt="img" />
 					<div className={s.butt}>
-
+						<button onClick={onDeleteFriend}>del</button>
+						<button onClick={onDeleteFriend}>del</button>
 					</div>
 
 			</div>
