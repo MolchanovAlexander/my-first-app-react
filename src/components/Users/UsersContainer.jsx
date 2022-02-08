@@ -4,9 +4,14 @@ import { followAC, unfollowAC, setUsersAC } from 'redux/users_reducer ';
 
 
 let mapStateToProps = (state) => {
-	//console.log(state.usersPage.users);
+	console.log(state.usersPage.users);
+	console.log(state.usersPage.pageSize);
+	console.log(state.usersPage.totalUsersCount);
 	return {
-		users: state.usersPage.users
+		users: state.usersPage.users,
+		pageSize: state.usersPage.pageSize,
+		totalUsersCount: state.usersPage.totalUsersCount,
+		currentPage:  state.usersPage.currentPage
 	}
 }
 let mapDispatchToProps = (dispatch) => {
@@ -19,6 +24,9 @@ let mapDispatchToProps = (dispatch) => {
 		},
 		setUsers: (users) => {
 			dispatch(setUsersAC(users))
+		},
+		setCurrentPage: (currentPage)=>{
+			dispatch(setCurrentPageAC(currentPage))
 		}
 
 	}
