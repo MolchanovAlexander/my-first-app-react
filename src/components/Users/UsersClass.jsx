@@ -15,23 +15,27 @@ class Users extends React.Component {
 				console.log(response.data);
 			});
 	}
+	onclickPage() {
+		this.props.setCurrentPage(this.p)
+	}
 	render() {
 
-		let pagesCount =Math.ceil(this.props.totalUsersCount / this.props.pageSize);
-		let pages =[];
+		let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+		let pages = [];
 
-		 for(let i=1; i <= pagesCount; i++){
-			 pages.push(i);
-		 }
+		for (let i = 1;i <= pagesCount;i++) {
+			pages.push(i);
+		}
 
 		return <div>
-					<div>
-					{pages.map(p =>{
-						return (<span  className={this.props.currentPage === p && styles.selectedPage} 
-							onClick{...() => {this.props.setCurrentPage(p)}} >{p}</span>)
-					})}
-						
-					</div>
+
+			{
+				pages.map(p => <span className={this.props.currentPage === p && styles.selectedPage}
+					onClick ={this.onclickPage} >{p}</span>)
+
+			}
+
+
 			{
 				this.props.users.map(u => <div key={u.id}>
 					<span>
