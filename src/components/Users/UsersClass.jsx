@@ -67,7 +67,7 @@ class Users extends React.Component {
       <div>
         <div className={styles.listPages}>
           <button onClick={() => this.stepCountChange(-1)}> {"<<"} </button>
-          <button onClick={() => this.stepCountChange(0)}>{'Previous 20'}</button>
+          <button className={styles.button} onClick={() => this.stepCountChange(0)}>{'Previous 20'}</button>
           {pages.map((p) => (
             <div
               key={p}
@@ -77,7 +77,7 @@ class Users extends React.Component {
               {p}
             </div>
           ))}
-          <button onClick={() => this.stepCountChange(1)}>{'Next 20     '}</button>
+          <button className={styles.button} onClick={() => this.stepCountChange(1)}>{'Next 20     '}</button>
           <button onClick={() => this.stepCountChange(10)}> {">>"} </button>
         </div>
         {this.props.users.map((u) => (
