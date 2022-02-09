@@ -1,8 +1,10 @@
 .userPhoto {
     width: 100px;
 }
-.selectedPage{
-    font-weight: 900;
+.listPages button{
+    
+    width: 87px;
+    
 }
 .listPages div{
     display: inline-flex;
@@ -20,4 +22,8 @@
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
+}
+.listPages .selectedPage {
+    font-weight: 900;
+    background: chartreuse;
 }
