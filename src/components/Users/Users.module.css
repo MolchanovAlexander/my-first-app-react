@@ -4,3 +4,20 @@
 .selectedPage{
     font-weight: 900;
 }
+.listPages div{
+    display: inline-flex;
+    text-align: center;
+    border: 1px solid grey;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    background-color: blueviolet;
+    cursor: pointer;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
