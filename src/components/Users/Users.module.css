@@ -26,4 +26,9 @@
 .listPages .selectedPage {
     font-weight: 900;
     background: chartreuse;
+    box-shadow: crimson 0px 0px 2px 2px,crimson 0px 0px 2px 2px ;
+}
+
+.users{
+    max-width: 300px;
 }
