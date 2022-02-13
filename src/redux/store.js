@@ -1,5 +1,5 @@
 import friendsReducer from "./friends_reducer";
-import profileReducer from "./profile_reducer ";
+import profileReducer from "./profile_reducer";
 import messagesReducer from "./messages_reducer  ";
 
 
