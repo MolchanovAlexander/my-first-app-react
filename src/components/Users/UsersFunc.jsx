@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./Users.module.css";
 import userPhoto from "../../assets/images/1png.png";
+import { NavLink } from "react-router-dom";
+
 
 let Users = (props) => {
   
@@ -37,16 +39,19 @@ let Users = (props) => {
         </button>
         <button onClick={() => props.stepCountChange("tothelast")}> {">>"} </button>
       </div>
+      <div className={styles.body_users}>
       {props.users.map((u) => (
         <div key={u.id} className = {styles.users}>
           <span>
             <div>
+              <NavLink to={'/profile/'+ u.id}>
               <img
                 src={u.photos.small != null ? u.photos.small : userPhoto}
                 alt="user photo"
                 className={styles.userPhoto}
               />
-            </div>
+               </NavLink>
+            </div> 
             <div>
               {u.followed ? (
                 <button
@@ -78,7 +83,8 @@ let Users = (props) => {
             </span>
           </span>
         </div>
-      ))}
+        
+      ))}</div>
     </div>
   );
 };

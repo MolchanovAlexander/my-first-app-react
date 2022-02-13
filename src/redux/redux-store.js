@@ -1,5 +1,5 @@
 import { combineReducers, createStore } from "redux";
-import profileReducer from "./profile_reducer ";
+import profileReducer from "./profile_reducer";
 import messagesReducer from "./messages_reducer  ";
 import friendsReducer from "./friends_reducer";
 import usersReducer from "./users_reducer ";
@@ -13,5 +13,7 @@ let reducers = combineReducers({
 });
 
 let store = createStore(reducers);
+
+window.store = store;
 
 export default store;

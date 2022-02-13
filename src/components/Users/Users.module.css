@@ -28,7 +28,13 @@
     background: chartreuse;
     box-shadow: crimson 0px 0px 2px 2px,crimson 0px 0px 2px 2px ;
 }
-
+.body_users{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 15px;
+}
 .users{
-    max-width: 300px;
+    max-width: 200px;
+    min-width: 200px;
+    
 }

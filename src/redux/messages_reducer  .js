@@ -36,7 +36,7 @@ let initialState = {
     newMessageBody: ""
 }
 const messagesReducer = (state = initialState, action) => {
-
+console.log(action);
     switch (action.type) {
         case UPDATE_NEW_MESSAGE_BODY:
 
