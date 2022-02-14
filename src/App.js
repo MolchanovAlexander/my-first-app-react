@@ -18,29 +18,29 @@ const App = () => {
       <Header />
       <NavBar  />
       <div className="app-wrapper-content">
-        <Routes>
+       
 
-          <Route path='/profile'
-            element={<ProfileContainer />} />
+          <Route path='/profile/:userId?'
+            render={()=> <ProfileContainer />} />
 
           <Route path='/dialogs'
-            element={<DialogsContainer />} />
+            component={DialogsContainer} />
 
           <Route path='/users'
-            element={<UsersContainer />} />
+            component={UsersContainer} />
 
           <Route path='/news'
-            element={<News />} />
+            component={News} />
 
           <Route path='/music'
-            element={<Music />} />
+            component={Music} />
 
           <Route path='/settings'
-            element={<Settings />} />
+            component={Settings} />
 
           <Route path='/friendlist'
-            element={<FriendlistContainer />} />
-        </Routes>
+            component={FriendlistContainer} />
+        
       </div>
     </div>
   )

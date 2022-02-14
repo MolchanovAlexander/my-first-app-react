@@ -6,7 +6,6 @@ import { NavLink } from "react-router-dom";
 
 let Users = (props) => {
   
-   console.log(props.totalUsersCount, props.fromCount,props.toCount);
     let pages = [];
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     for (let i = props.fromCount; i <= pagesCount && i <= props.toCount; i++ ) {
@@ -15,10 +14,10 @@ let Users = (props) => {
   return (
     <div>
       <div className={styles.listPages}>
-        <button onClick={() => props.stepCountChange("tothefirst")}> {"<<"} </button>
+        <button onClick={() => props.stepCountChange(0)}> {"<<"} </button>
         <button
           className={styles.button}
-          onClick={() => props.stepCountChange("prevpages")}
+          onClick={() => props.stepCountChange(1)}
         >
           {"Previous 20"}
         </button>
@@ -26,18 +25,18 @@ let Users = (props) => {
           <div
             key={p}
             className={props.currentPage === p ? styles.selectedPage : 0}
-            onClick={() => props.onPageChanged(p)}
+            onClick={() => props.onPageChanged(p, props.fromCount,props.toCount)}
           >
             {p}
           </div>
         ))}
         <button
           className={styles.button}
-          onClick={() => props.stepCountChange("nextpages")}
+          onClick={() => props.stepCountChange(2)}
         >
           {"Next 20     "}
         </button>
-        <button onClick={() => props.stepCountChange("tothelast")}> {">>"} </button>
+        <button onClick={() => props.stepCountChange(3)}> {">>"} </button>
       </div>
       <div className={styles.body_users}>
       {props.users.map((u) => (
