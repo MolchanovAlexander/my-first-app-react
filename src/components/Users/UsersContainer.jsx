@@ -6,43 +6,24 @@ import {
   setCurrentPage,
   setIsFetching,
   setUsersTotalCount,
+  setFollowingRun,
+  getUsersThunkCreator,
+  unfollowSuccess,
+  followSuccess
+  
 } from "redux/users_reducer ";
-import * as axios from "axios";
 import React from "react";
 import Users from "./UsersFunc";
 import Preloader from "components/preloader/Preloader";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    this.props.setIsFetching(true);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
-        {
-          withCredentials: true,
-        }
-      )
-      .then((response) => {
-        this.props.setIsFetching(false);
-        this.props.setUsers(response.data.items);
-        this.props.setUsersTotalCount(response.data.totalCount);
-      });
+    this.props.getUsers(this.props.currentPage,this.props.pageSize);
   }
 
   onPageChanged = (pageNumber, fromCount, toCount) => {
     this.props.setCurrentPage(pageNumber, fromCount, toCount);
-    this.props.setIsFetching(true);
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`,
-        {
-          withCredentials: true,
-        }
-      )
-      .then((response) => {
-        this.props.setUsers(response.data.items);
-        this.props.setIsFetching(false);
-      });
+    this.props.getUsers(pageNumber, this.props.pageSize);
   };
   stepCountChange = (way) => {
     let from = this.props.fromCount;
@@ -90,6 +71,11 @@ class UsersContainer extends React.Component {
           users={this.props.users}
           follow={this.props.follow}
           unfollow={this.props.unfollow}
+          setFollowingRun = {this.props.setFollowingRun}
+          followingRun ={this.props.followingRun}
+          unfollowSuccess = {this.props.unfollowSuccess}
+          followSuccess = {this.props.followSuccess}
+          
         />
       </>
     );
@@ -109,6 +95,7 @@ let mapStateToProps = (state) => {
     step: state.usersPage.step,
     fromCount: state.usersPage.fromCount,
     toCount: state.usersPage.toCount,
+    followingRun: state.usersPage.followingRun
   };
 };
 
@@ -119,4 +106,9 @@ export default connect(mapStateToProps, {
   setCurrentPage,
   setUsersTotalCount,
   setIsFetching,
+  setFollowingRun,
+  followSuccess,
+  unfollowSuccess,
+  getUsers: getUsersThunkCreator,
+  
 })(UsersContainer);

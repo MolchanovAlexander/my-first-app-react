@@ -4,6 +4,8 @@ import messagesReducer from "./messages_reducer  ";
 import friendsReducer from "./friends_reducer";
 import usersReducer from "./users_reducer ";
 import authReducer from "./auth_reducer"
+import { applyMiddleware } from "redux";
+import thunkMiddleware  from "redux-thunk";
 
 
 let reducers = combineReducers({
@@ -14,7 +16,7 @@ let reducers = combineReducers({
     auth: authReducer
 });
 
-let store = createStore(reducers);
+let store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
 window.store = store;
 

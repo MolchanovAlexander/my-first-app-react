@@ -1,0 +1,19 @@
+.preloader{
+	width: 72.5%;
+	height: 10vh;
+	position: absolute;
+	opacity: 0.7;
+	background-color: rgb(152, 189, 189);
+	display: flex;
+	justify-content: center;
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-o-border-radius: 8px;
+}
+.preloader img{
+	width: 50px;
+	height: 50px;
+	
+}
