@@ -36,8 +36,7 @@ export const getAuthUserData = () => (dispatch) => {
 		let { id, login, email } = response.data.data;
 		dispatch(setAuthUserData(id, login, email));
 	  }
-	  console.log(response.data);
-	});
+ 	});
 }
 
 

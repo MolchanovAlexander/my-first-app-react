@@ -9,7 +9,10 @@ import Settings from './components/Settings/Settings';
 import FriendlistContainer from 'components/friendlist/FriendlistContainer';
 import DialogsContainer from 'components/Dialogs/DialogsContainer';
 import UsersContainer from 'components/Users/UsersContainer';
-import ProfileContainer from 'components/Profile/ProfileContainer'
+import ProfileContainer from 'components/Profile/ProfileContainer';
+import LoginPage from './components/login/Login';
+
+
 
 const App = () => {
   return (
@@ -28,6 +31,9 @@ const App = () => {
 
           <Route path='/users'
             component={UsersContainer} />
+
+          <Route path='/login'
+            component={LoginPage} />
 
           <Route path='/news'
             component={News} />
