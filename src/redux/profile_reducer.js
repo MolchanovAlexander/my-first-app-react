@@ -1,8 +1,10 @@
-import { usersAPI } from "api/api";
+import { usersAPI, profileAPI } from "api/api";
 
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
+const SET_USER_STATUS = "SET_USER_STATUS";
+
 
 let initialState = {
   postsData: [{ id: 1, likeCount: 0, message: "la la la " }],
@@ -30,6 +32,7 @@ let initialState = {
         "https://social-network.samuraijs.com/activecontent/images/users/2/user.jpg?v=0",
     },
   },
+  status: "test"
 };
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -51,6 +54,9 @@ const profileReducer = (state = initialState, action) => {
       };
     case SET_USER_PROFILE:
       return { ...state, profile: { ...action.profile } };
+    case SET_USER_STATUS:
+      return { ...state,
+         status:  action.status };
     default:
       return state;
   }
@@ -63,12 +69,31 @@ export const updateNewPostText = (text) => ({
 export const setUserProfile = (profile) => {
   return { type: SET_USER_PROFILE, profile: profile };
 };
+export const setStatus = (status) => {
+  return { type: SET_USER_STATUS, status: status };
+};
 export const getUserProfile = (userID) =>  {
         return (dispatch) => {
-        usersAPI.getProfile(userID).then((response) => {
+        profileAPI.getProfile(userID).then((response) => {
         dispatch(setUserProfile(response.data));
         });
     }
+};
+export const getUserStatus = (userID) => (dispatch) =>  {
+      profileAPI.getStatus(userID)
+      .then((response) => {
+        console.log(response);
+       
+          dispatch(setStatus(response.data))
+  });
+
+};
+export const updateStatus = (status) => (dispatch) =>  {
+  profileAPI.updateStatus(status)
+  .then((response) => {
+    if(response.data.resultCode ===0)dispatch(setStatus(status));
+});
+
 };
 
 export default profileReducer;

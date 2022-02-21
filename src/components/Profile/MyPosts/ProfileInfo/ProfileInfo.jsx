@@ -21,7 +21,7 @@ const ProfileInfo = (props) => {
         <br></br> {props.profile.lookingForAJob ? <span>looking for a job</span>: null}
         <br></br> contacts FB:{props.profile.contacts.facebook}
         <br></br> contacts IG:{props.profile.contacts.instagram}
-        <ProfileStatus status={'hello dniwe'} />
+        <ProfileStatus status={props.status} updateStatus = {props.updateStatus}/>
       </div>
     </div>
   )
