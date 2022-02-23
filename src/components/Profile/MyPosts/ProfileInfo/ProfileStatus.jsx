@@ -27,9 +27,9 @@ class ProfileStatus extends React.Component {
       this.setState({
         status: this.props.status,
       });
-    let a = this.state;
-    let b = this.props;
-    console.log(a, b);
+    // let a = this.state;
+    // let b = this.props;
+    // console.log(a, b);
   }
   render() {
     return (

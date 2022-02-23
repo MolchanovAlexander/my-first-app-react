@@ -7,9 +7,6 @@ import { reduxForm, Field } from "redux-form";
 
 const Dialogs = (props) => {
   //if(!props.isAuth) return <Redirect to={'./login'} />
-  let onSubmit = (formData) => {
-	console.log(formData);
-  };
 
   let state = props.dialogData;
   let dialogsElements = state.dialogData.map((d) => (
@@ -19,40 +16,37 @@ const Dialogs = (props) => {
   let messagesElements = state.messagesData.map((m) => (
     <MessageItem key={m.id} message={m.message} />
   ));
-  let newMessageBody = state.newMessageBody;
-  let onSendMessageClick = () => {
-    props.sendMessage();
-  };
-  let onNewMessageChange = (e) => {
-    let body = e.target.value;
-    props.updateNewMessageBody(body);
+
+  let addNewMessage = (values) => {
+    props.sendMessage(values.newMessageBody);
   };
   return (
     <div>
       <div className={s.dialogs}>
         <div className={s.dialogsItem}>{dialogsElements}</div>
-      </div><div className={s.messages}>
-        {messagesElements}{" "}</div>
-      <NewMessageReduxForm onSubmit={onSubmit}/>
+      </div>
+      <div className={s.messages}>{messagesElements} </div>
+      <NewMessageReduxForm onSubmit={addNewMessage} />
     </div>
   );
 };
 
 const AddMessageForm = (props) => {
-	
   return (
     <form onSubmit={props.handleSubmit} action="">
-      
-        <div className={s.postBlock}>
-          <h3>My messages</h3>
-		  <Field component={"textarea"} name="newMessageBody" placeholder="enter your message" />
-         
-          <div>
-            <button >send message</button>
-          </div>
-          <div className={s.newPost}>{3210}</div>
+      <div className={s.postBlock}>
+        <h3>My messages</h3>
+        <Field
+          component={"textarea"}
+          name="newMessageBody"
+          placeholder="enter your message"
+        />
+
+        <div>
+          <button>send message</button>
         </div>
-      
+        <div className={s.newPost}>{3210}</div>
+      </div>
     </form>
   );
 };
