@@ -8,7 +8,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import {Provider} from 'react-redux'
 
-let rerender = (state) => {
+let rerender = () => {
   
   ReactDOM.render(
     <React.StrictMode>
