@@ -7,29 +7,7 @@ const SET_USER_STATUS = "SET_USER_STATUS";
 
 let initialState = {
   postsData: [{ id: 1, likeCount: 0, message: "la la la " }],
-  profile: {
-    aboutMe: "guf",
-    contacts: {
-      facebook: "/test/fb/guf",
-      website: null,
-      vk: null,
-      twitter: null,
-      instagram: "/test/gfg.com",
-      youtube: null,
-      github: null,
-      mainLink: null,
-    },
-    lookingForAJob: true,
-    lookingForAJobDescription: null,
-    fullName: "121312Olexandr",
-    userId: 12222,
-    photos: {
-      small:
-        "https://social-network.samuraijs.com/activecontent/images/users/2/user.jpg?v=0",
-      large:
-        "https://social-network.samuraijs.com/activecontent/images/users/2/user.jpg?v=0",
-    },
-  },
+  profile: null ,
   status: "test"
 };
 const profileReducer = (state = initialState, action) => {
