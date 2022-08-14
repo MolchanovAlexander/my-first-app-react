@@ -24,12 +24,12 @@ class App extends React.Component {
     }
 
    render() { 
-    console.log(this.props)
+    
         if (!this.props.initialized ) {
             
             return <Preloader />
         } 
-        console.log(this.props.initialized)
+       
         return (
            
             <div className="app-wrapper">

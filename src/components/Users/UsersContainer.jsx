@@ -10,22 +10,35 @@ import {
   getUsersThunkCreator,
   unfollowSuccess,
   followSuccess
-  
+
 } from "redux/users_reducer ";
 import React from "react";
 import Users from "./UsersFunc";
 import Preloader from "components/preloader/Preloader";
 import { withAuthRedirect } from "hoc/withAuthRedirect";
 import { compose } from "redux";
+import {
+  getUsers,
+  getPageSize, 
+  getTotalUsersCount, 
+  getCurrentPage, 
+  getIsFetching, 
+  getPagesCount, 
+  getLastPageFromCount,
+  getStep, 
+  getFromCount, 
+  getToCount, 
+  getFollowingRun
+} from "redux/users_seelectors"
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    this.props.getUsers(this.props.currentPage,this.props.pageSize);
+    this.props.requestUsers(this.props.currentPage, this.props.pageSize);
   }
 
   onPageChanged = (pageNumber, fromCount, toCount) => {
     this.props.setCurrentPage(pageNumber, fromCount, toCount);
-    this.props.getUsers(pageNumber, this.props.pageSize);
+    this.props.requestUsers(pageNumber, this.props.pageSize);
   };
   stepCountChange = (way) => {
     let from = this.props.fromCount;
@@ -73,11 +86,11 @@ class UsersContainer extends React.Component {
           users={this.props.users}
           follow={this.props.follow}
           unfollow={this.props.unfollow}
-          setFollowingRun = {this.props.setFollowingRun}
-          followingRun ={this.props.followingRun}
-          unfollowSuccess = {this.props.unfollowSuccess}
-          followSuccess = {this.props.followSuccess}
-          
+          setFollowingRun={this.props.setFollowingRun}
+          followingRun={this.props.followingRun}
+          unfollowSuccess={this.props.unfollowSuccess}
+          followSuccess={this.props.followSuccess}
+
         />
       </>
     );
@@ -85,7 +98,23 @@ class UsersContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-  // console.log(state.usersPage);
+
+  return {
+    users: getUsers(state),
+    pageSize: getPageSize(state),
+    totalUsersCount: getTotalUsersCount(state),
+    currentPage: getCurrentPage(state),
+    isFetching: getIsFetching(state),
+    pagesCount: getPagesCount(state),
+    lastPageFromCount: getLastPageFromCount(state),
+    fromCount: getFromCount(state),
+    step: getStep(state),
+    toCount: getToCount(state),
+    followingRun: getFollowingRun(state)
+  };
+};/*
+let mapStateToProps = (state) => {
+  
   return {
     users: state.usersPage.users,
     pageSize: state.usersPage.pageSize,
@@ -99,13 +128,12 @@ let mapStateToProps = (state) => {
     toCount: state.usersPage.toCount,
     followingRun: state.usersPage.followingRun
   };
-};
-
+};*/
 
 export default compose(
   withAuthRedirect,
   connect(mapStateToProps,
-     {
+    {
       follow,
       unfollow,
       setUsers,
@@ -115,7 +143,7 @@ export default compose(
       setFollowingRun,
       followSuccess,
       unfollowSuccess,
-      getUsers: getUsersThunkCreator,
+      requestUsers: getUsersThunkCreator,
     }
   )
 )(UsersContainer);
