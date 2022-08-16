@@ -3,6 +3,7 @@ import React from "react";
 import s from "./ProfileInfo.module.css";
 import userPhoto from "../../../../assets/images/1png.png";
 import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
   // console.log(props);
@@ -28,7 +29,7 @@ const ProfileInfo = (props) => {
         {props.profile.lookingForAJob ? <span>looking for a job</span> : null}
         <br></br> contacts FB:{props.profile.contacts.facebook}
         <br></br> contacts IG:{props.profile.contacts.instagram}
-        <ProfileStatus
+        <ProfileStatusWithHooks
           status={props.status}
           updateStatus={props.updateStatus}
         />
