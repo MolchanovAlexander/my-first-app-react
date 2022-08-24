@@ -1,7 +1,8 @@
 import React from "react";
 import { useEffect, useState} from "react";
 
-const ProfileStatusWithHooks = (props) => {
+const ProfileStatusWithHooks1 = (props) => {
+  console.log('renderprofStatus');
   let [editMode, setEditMode] = useState(false)
   let [status, setStatus] = useState(props.status)
   useEffect(()=>{
@@ -47,4 +48,4 @@ const ProfileStatusWithHooks = (props) => {
     </>
   );
 }
-export default ProfileStatusWithHooks;
+export const ProfileStatusWithHooks = React.memo(ProfileStatusWithHooks1);

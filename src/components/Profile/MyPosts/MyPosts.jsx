@@ -6,7 +6,9 @@ import { reduxForm, Field } from "redux-form";
 import { maxLengthCreator, required } from "utils/validators/validators";
 
 let maxLehgth10 = maxLengthCreator(10)
+
 const MyPosts = (props) => {
+ 
   let postsElements = props.dataposts.map((p) => (
     <Post key={p.id} message={p.message} likeCount={p.likeCount} />
   ));

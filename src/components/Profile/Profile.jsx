@@ -1,10 +1,9 @@
 import React from "react";
-import s from "./Profile.module.css";
-import ProfileInfo from "./MyPosts/ProfileInfo/ProfileInfo";
+import {ProfileInfo} from "./MyPosts/ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
-const Profile = (props) => {
-  
+const Profile = props => {
+  console.log('render');
   return (
     <div>
       <ProfileInfo profile={props.profile} status={props.status} updateStatus = {props.updateStatus}/>
@@ -12,4 +11,4 @@ const Profile = (props) => {
     </div>
   );
 };
-export default Profile;
+export const ProfileMemo = React.memo(Profile);

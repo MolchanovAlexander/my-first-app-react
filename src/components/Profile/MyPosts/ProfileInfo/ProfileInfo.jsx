@@ -3,10 +3,10 @@ import React from "react";
 import s from "./ProfileInfo.module.css";
 import userPhoto from "../../../../assets/images/1png.png";
 import ProfileStatus from "./ProfileStatus";
-import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
+import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
 
-const ProfileInfo = (props) => {
-  // console.log(props);
+const ProfileInfo1 = (props) => {
+  
   if (!props.profile) {
     return <Preloader />;
   }
@@ -37,4 +37,4 @@ const ProfileInfo = (props) => {
     </div>
   );
 };
-export default ProfileInfo;
+export const ProfileInfo = React.memo(ProfileInfo1);

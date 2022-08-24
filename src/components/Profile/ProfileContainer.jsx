@@ -1,5 +1,5 @@
 import React from "react";
-import Profile from "./Profile";
+import {ProfileMemo}  from "./Profile";
 import { connect } from "react-redux";
 import { getUserProfile, setUserProfile, getUserStatus, updateStatus } from "redux/profile_reducer";
 import { withRouter } from "react-router";
@@ -17,7 +17,11 @@ class ProfileContainer extends React.Component {
 	}
 	render() {
 		
-		return  <Profile {...this.props} profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatus} />
+		return  <ProfileMemo
+		 {...this.props} 
+		 profile={this.props.profile} 
+		 status={this.props.status} 
+		 updateStatus={this.props.updateStatus} />
 	}
 };
 

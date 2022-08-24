@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, withRouter } from 'react-router-dom';
 import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer';
-import NavBar from './components/NavBar/NavBar';
+import {NavBar} from './components/NavBar/NavBar';
 import Music from './components/music/Music';
 import News from './components/News/News';
 import Settings from './components/Settings/Settings';
