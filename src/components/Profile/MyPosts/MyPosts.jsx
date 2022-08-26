@@ -8,11 +8,11 @@ import { maxLengthCreator, required } from "utils/validators/validators";
 let maxLehgth10 = maxLengthCreator(10)
 
 const MyPosts = (props) => {
- 
-  let postsElements = props.dataposts.map((p) => (
-    <Post key={p.id} message={p.message} likeCount={p.likeCount} />
+ console.log(props);
+  let postsElements = props.dataposts.reverse().map((p) => (
+    <Post key={p.id} post={p} message={p.message} likeCount={p.likeCount} addLike ={props.addLike}/>
   ));
-  let newPostElement = React.createRef();
+  // let newPostElement = React.createRef();
 
   let addNewPost = (values) => {
     props.addPost(values.newPostBody);
