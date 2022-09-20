@@ -57,29 +57,23 @@ export const addLike = (body) => ({ type: ADD_LIKE, body });
 export const setUserProfile = (profile) => {
   return { type: SET_USER_PROFILE, profile: profile };
 };
+
 export const setStatus = (status) => {
   return { type: SET_USER_STATUS, status: status };
 };
-export const getUserProfile = (userID) => {
-  return (dispatch) => {
-    profileAPI.getProfile(userID).then((response) => {
-      dispatch(setUserProfile(response.data));
-    });
-  }
-};
-export const getUserStatus = (userID) => (dispatch) => {
-  profileAPI.getStatus(userID)
-    .then((response) => {
-      dispatch(setStatus(response.data))
-    });
 
-};
-export const updateStatus = (status) => (dispatch) => {
-  profileAPI.updateStatus(status)
-    .then((response) => {
-      if (response.data.resultCode === 0) dispatch(setStatus(status));
-    });
+export const getUserProfile = (userID) => async (dispatch) => {
+  const response = await profileAPI.getProfile(userID)
+  dispatch(setUserProfile(response.data));
+}
 
+export const getUserStatus = (userID) => async (dispatch) => {
+  const response = await profileAPI.getStatus(userID)
+  dispatch(setStatus(response.data))
+};
+export const updateStatus = (status) => async (dispatch) => {
+  const response = await profileAPI.updateStatus(status)
+  if (response.data.resultCode === 0) dispatch(setStatus(status));
 };
 
 export default profileReducer;

@@ -1,91 +1,53 @@
 import React from "react";
 import styles from "./Users.module.css";
 import userPhoto from "../../assets/images/1png.png";
-import { NavLink } from "react-router-dom";
+import { MappingComponentsArray } from "utils/mappingComponentHelper";
 
 
-let Users = (props) => {
+let Users = ({ users, totalUsersCount, pageSize,
+	fromCount, toCount, stepCountChange,
+	currentPage, onPageChanged, unfollowSuccess
+	, followSuccess, followingRun }) => {
 
 	let pages = [];
-	let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-	for (let i = props.fromCount; i <= pagesCount && i <= props.toCount; i++ ) {
-	  pages.push(i);
+	let pagesCount = Math.ceil(totalUsersCount / pageSize);
+	for (let i = fromCount; i <= pagesCount && i <= toCount; i++) {
+		pages.push(i);
 	}
-  return (
-	<div>
-	  <div className={styles.listPages}>
-		<button onClick={() => props.stepCountChange(0)}> {"<<"} </button>
-		<button
-		  className={styles.button}
-		  onClick={() => props.stepCountChange(1)}
-		>
-		  {"Previous 20"}
-		</button>
-		{pages.map((p) => (
-		  <div
-			key={p}
-			className={props.currentPage === p ? styles.selectedPage : 0}
-			onClick={() => props.onPageChanged(p, props.fromCount,props.toCount)}
-		  >
-			{p}
-		  </div>
-		))}
-		<button
-		  className={styles.button}
-		  onClick={() => props.stepCountChange(2)}
-		>
-		  {"Next 20     "}
-		</button>
-		<button onClick={() => props.stepCountChange(3)}> {">>"} </button>
-	  </div>
-	  <div className={styles.body_users}>
-	  {props.users.map((u) => (
-		<div key={u.id} className = {styles.users}>
-		  <span>
-			<div>
-			  <NavLink to={'/profile/'+ u.id}>
-			  <img
-				src={u.photos.small != null ? u.photos.small : userPhoto}
-				alt="user photo"
-				className={styles.userPhoto}
-			  />
-			   </NavLink>
-			</div> 
-			<div>
-			  {u.followed ? (
-				<button disabled={props.followingRun.some(id => id === u.id)}
-				  onClick={() => {
-					props.unfollowSuccess(u.id)
-				  }}
+	return (
+		<div>
+			<div className={styles.listPages}>
+				<button onClick={() => stepCountChange(0)}> {"<<"} </button>
+				<button
+					className={styles.button}
+					onClick={() => stepCountChange(1)}
 				>
-				  UNFOLLOW
+					{"Previous 20"}
 				</button>
-			  ) : (
-				<button disabled={props.followingRun.some(id => id === u.id)}
-				  onClick={() => {
-					  props.followSuccess(u.id)
-				  }}
+				{pages.map((p) => (
+					<div
+						key={p}
+						className={currentPage === p ? styles.selectedPage : 0}
+						onClick={() => onPageChanged(p, fromCount, toCount)}
+					>
+						{p}
+					</div>
+				))}
+				<button
+					className={styles.button}
+					onClick={() => stepCountChange(2)}
 				>
-				  FOLLOW
+					{"Next 20     "}
 				</button>
-			  )}
+				<button onClick={() => stepCountChange(3)}> {">>"} </button>
 			</div>
-		  </span>
-		  <span>
-			<span>
-			  <div>{u.name}</div>
-			  <div>{u.status}</div>
-			</span>
-			<span>
-			  <div>{u.id}</div>
-			  <div>{"u.location.city"}</div>
-			</span>
-		  </span>
+			<div className={styles.body_users}>
+				{MappingComponentsArray(users, styles.users, styles.userPhoto,
+					userPhoto, styles.followedButton,
+					followingRun, unfollowSuccess, followSuccess)}
+			</div>
 		</div>
-		
-	  ))}</div>
-	</div>
-  );
+	);
 };
 
 export default Users;

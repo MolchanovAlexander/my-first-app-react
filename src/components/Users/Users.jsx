@@ -20,7 +20,6 @@ let Users = (props) => {
               {u.followed ? (
                 <button
                   onClick={() => {
-                    console.log(u.id);
                     axios
                       .delete(
                         `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
@@ -35,7 +34,6 @@ let Users = (props) => {
                         if (response.data.resultCode === 0) {
                           props.unfollow(u.id);
                         }
-                        console.log(response.data);
                       });
                   }}
                 >

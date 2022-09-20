@@ -1,4 +1,5 @@
 import { usersAPI } from "api/api";
+import { updateObjectInArray } from "utils/obj_helpers";
 
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
@@ -26,22 +27,12 @@ const usersReducer = (state = initialState, action) => {
     case FOLLOW:
       return {
         ...state,
-        users: state.users.map((u) => {
-          if (u.id === action.userID) {
-            return { ...u, followed: true };
-          }
-          return u;
-        }),
+        users: updateObjectInArray(state.users, action.userID,"id",{followed: true})
       };
     case UNFOLLOW:
       return {
         ...state,
-        users: state.users.map((u) => {
-          if (u.id === action.userID) {
-            return { ...u, followed: false };
-          }
-          return u;
-        }),
+        users: updateObjectInArray(state.users, action.userID,"id",{followed: false})
       };
     case SET_USERS: {
       return { ...state, users: action.users };
@@ -103,39 +94,43 @@ export const setFollowingRun = (isFetching, userID) => ({
   userID,
 });
 export const getUsersThunkCreator = (currentPage, pageSize) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(setIsFetching(true));
 
-    usersAPI.getUsers(currentPage, pageSize).then((data) => {
-      dispatch(setUsersTotalCount(data.totalCount));
-      dispatch(setUsers(data.items));
-      dispatch(setIsFetching(false));
-    });
+    let data = await usersAPI.getUsers(currentPage, pageSize)
+    dispatch(setUsersTotalCount(data.totalCount));
+    dispatch(setUsers(data.items));
+    dispatch(setIsFetching(false));
   };
 };
+const followUnfollowFlow = async (dispatch, userID, apiMethod, actionCreator) => {
+
+  dispatch(setFollowingRun(true, userID));
+  let data = await apiMethod(userID)
+
+  if (data.resultCode == 0) {
+    dispatch(actionCreator(userID))
+  }
+  dispatch(setFollowingRun(false, userID));
+};
+
 export const followSuccess = (userID) => {
-  return (dispatch) => {
-    dispatch(setFollowingRun(true, userID));
-    usersAPI.follow(userID).then((data) => {
-      if (data.resultCode == 0) {
-        dispatch(follow(userID));
-      }
-      dispatch(setFollowingRun(false, userID));
-    });
+  return async (dispatch) => {
+    let apiMethod = usersAPI.follow.bind(usersAPI)
+    let actionCreator = follow
+
+    followUnfollowFlow(dispatch, userID, apiMethod, actionCreator)
+  };
+}
+export const unfollowSuccess = (userID) => {
+  return async (dispatch) => {
+    let apiMethod = usersAPI.unfollow.bind(usersAPI)
+    let actionCreator = unfollow
+
+    followUnfollowFlow(dispatch, userID, apiMethod, actionCreator)
   };
 };
-export const unfollowSuccess = (userID) => {
-	return (dispatch) => {
-	  dispatch(setFollowingRun(true, userID));
-	  usersAPI.unfollow(userID).then((data) => {
-		if (data.resultCode == 0) {
-		  dispatch(follow(userID));
-		}
-		dispatch(setFollowingRun(false, userID));
-	  });
-	};
-  };
-  
+
 // export const stepCountChange = (way) => {
 //     let from = state.fromCount;
 //     let to = state.toCount;
