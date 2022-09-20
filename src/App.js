@@ -1,5 +1,5 @@
-import React from 'react'
-import { Route, withRouter } from 'react-router-dom';
+import React, { Suspense } from 'react';
+import { Redirect, Route, withRouter } from 'react-router-dom';
 import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer';
 import {NavBar} from './components/NavBar/NavBar';
@@ -8,7 +8,7 @@ import News from './components/News/News';
 import Settings from './components/Settings/Settings';
 import FriendlistContainer from 'components/friendlist/FriendlistContainer';
 import DialogsContainer from 'components/Dialogs/DialogsContainer';
-import UsersContainer from 'components/Users/UsersContainer';
+//import UsersContainer from 'components/Users/UsersContainer';
 import ProfileContainer from 'components/Profile/ProfileContainer';
 import LoginPage from './components/login/Login';
 import { initializedApp } from "./redux/app_reducer.js"
@@ -16,6 +16,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import Preloader from 'components/preloader/Preloader';
 
+const UsersContainer = React.lazy(()=>import('components/Users/UsersContainer'))
 
 
 class App extends React.Component {
@@ -29,15 +30,16 @@ class App extends React.Component {
             
             return <Preloader />
         } 
+        
        
         return (
-           
+            <React.Suspense fallback={<Preloader />}>
             <div className="app-wrapper">
                 <HeaderContainer />
                 <NavBar />
                 <div className="app-wrapper-content">
-
-
+              
+                    <Redirect to='/login'/>
                     <Route path='/profile/:userId?'
                         render={() => <ProfileContainer />} />
 
@@ -45,7 +47,7 @@ class App extends React.Component {
                         component={DialogsContainer} />
 
                     <Route path='/users'
-                        component={UsersContainer} />
+                       component={UsersContainer}/>
 
                     <Route path='/login'
                         component={LoginPage} />
@@ -63,7 +65,7 @@ class App extends React.Component {
                         component={FriendlistContainer} />
 
                 </div>
-            </div>
+            </div> </React.Suspense>
         )
     }
 }
