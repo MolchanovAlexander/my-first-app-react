@@ -6,9 +6,9 @@ import {NavBar} from './components/NavBar/NavBar';
 import Music from './components/music/Music';
 import News from './components/News/News';
 import Settings from './components/Settings/Settings';
-import FriendlistContainer from 'components/friendlist/FriendlistContainer';
+import FriendlistContainer from 'components/friendlist/FriendlistContainerClass';
 import DialogsContainer from 'components/Dialogs/DialogsContainer';
-//import UsersContainer from 'components/Users/UsersContainer';
+import UsersContainer from 'components/Users/UsersContainer';
 import ProfileContainer from 'components/Profile/ProfileContainer';
 import LoginPage from './components/login/Login';
 import { initializedApp } from "./redux/app_reducer.js"
@@ -16,7 +16,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import Preloader from 'components/preloader/Preloader';
 
-const UsersContainer = React.lazy(()=>import('components/Users/UsersContainer'))
+// const UsersContainer = React.lazy(()=>import('components/Users/UsersContainer'))
 
 
 class App extends React.Component {

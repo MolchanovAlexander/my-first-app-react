@@ -101,6 +101,7 @@ export const getUsersThunkCreator = (currentPage, pageSize) => {
     dispatch(setUsersTotalCount(data.totalCount));
     dispatch(setUsers(data.items));
     dispatch(setIsFetching(false));
+    console.log(data);
   };
 };
 const followUnfollowFlow = async (dispatch, userID, apiMethod, actionCreator) => {

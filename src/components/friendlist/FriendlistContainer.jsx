@@ -1,21 +1,21 @@
 import Friendlist from "components/friendlist/Friendlist";
-import { friendDeleteActionCreator } from "redux/friends_reducer";
 import { connect } from "react-redux";
-let mapStateToProps =(state)=>{
-	
-	return{ 
-		friendsData: state.friends.friendsData,
-		
-		
-	} 
-  }
-  let mapDispatchToProps=(dispatch)=>{
-	return{
-		deleteFriend: (friendId)=>{
-			let action = friendDeleteActionCreator(friendId);
-			dispatch(action); 
-		}
+import { getUsers, getIsFetching } from "redux/users_seelectors";
+import { getUsersThunkCreator } from "redux/users_reducer ";
+
+ //const FriendlistContainer = (props) => {
+ 	//return <Friendlist friendsData={props.friendsData} isFetching={props.isFetching} />
+ //}
+let mapStateToProps = (state) => {
+	return {
+		friendsData: getUsers(state),
+		isFetching: getIsFetching(state),
 	}
-  }
-const FriendlistContainer = connect(mapStateToProps,mapDispatchToProps)(Friendlist)
+}
+let mapDispatchToProps = () => {
+	return {
+		requestUsers: getUsersThunkCreator,
+	}
+}
+const FriendlistContainer = connect(mapStateToProps, {requestUsers: getUsersThunkCreator,})(Friendlist)
 export default FriendlistContainer;

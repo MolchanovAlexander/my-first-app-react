@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom"
 import React from "react"
 
-export const MappingComponentsArray = (items, stylesUser,stylesPhoto,userPhoto, styleFollow, followingRun,unfollowSuccess,followSuccess) => {
+export const MappingComponentsArray = (items,
+	 stylesUser,stylesPhoto,userPhoto,
+	  styleFollow = null, followingRun = null,unfollowSuccess = null,followSuccess = null) => {
     
 	return items.map((u) => (
 		<div key={u.id} className = {stylesUser}>
@@ -16,7 +18,7 @@ export const MappingComponentsArray = (items, stylesUser,stylesPhoto,userPhoto, 
 			   </NavLink>
 			</div> 
 			<div>
-			  {u.followed ? (
+			  {followingRun !=null ? (u.followed  ? (
 				<button className={styleFollow} disabled={followingRun.some(id => id === u.id)}
 				  onClick={() => {
 					unfollowSuccess(u.id)
@@ -32,7 +34,7 @@ export const MappingComponentsArray = (items, stylesUser,stylesPhoto,userPhoto, 
 				>
 				  FOLLOW
 				</button>
-			  )}
+			  )): null}
 			</div>
 		  </span>
 		  <span>

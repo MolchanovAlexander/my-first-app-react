@@ -69,7 +69,7 @@ class UsersContainer extends React.Component {
     }
   };
   render() {
-    console.log("render");
+    
     return (
       <>
         {this.props.isFetching ? <Preloader /> : null}
@@ -113,7 +113,8 @@ let mapStateToProps = (state) => {
     toCount: getToCount(state),
     followingRun: getFollowingRun(state)
   };
-};/*
+};
+/*
 let mapStateToProps = (state) => {
   
   return {
