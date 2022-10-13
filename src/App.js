@@ -6,7 +6,7 @@ import {NavBar} from './components/NavBar/NavBar';
 import Music from './components/music/Music';
 import News from './components/News/News';
 import Settings from './components/Settings/Settings';
-import FriendlistContainer from 'components/friendlist/FriendlistContainerClass';
+import FriendlistContainer from 'components/friendlist/FriendlistContainer';
 import DialogsContainer from 'components/Dialogs/DialogsContainer';
 import UsersContainer from 'components/Users/UsersContainer';
 import ProfileContainer from 'components/Profile/ProfileContainer';
@@ -15,6 +15,7 @@ import { initializedApp } from "./redux/app_reducer.js"
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import Preloader from 'components/preloader/Preloader';
+import { getFollowedUsersThunkCreator } from "redux/users_reducer ";
 
 // const UsersContainer = React.lazy(()=>import('components/Users/UsersContainer'))
 
@@ -22,6 +23,7 @@ import Preloader from 'components/preloader/Preloader';
 class App extends React.Component {
     componentDidMount() {
         this.props.initializedApp()
+        this.props.getFollowedUsersThunkCreator()
     }
 
    render() { 
@@ -78,4 +80,4 @@ const mapStateToProps = (state) => ({
 
 export default compose(
     withRouter,
-    connect(mapStateToProps, { initializedApp }))(App);
+    connect(mapStateToProps, { initializedApp, getFollowedUsersThunkCreator }))(App);

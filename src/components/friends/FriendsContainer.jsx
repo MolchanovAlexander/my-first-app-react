@@ -1,14 +1,14 @@
 import Friends from "./Friends";
 import { connect } from "react-redux";
+import { getFollowedUsers } from "redux/users_seelectors";
 
 let mapStateToProps =(state)=>{
 	
 	return{ 
-		friendsData: state.friends.friendsData,
-		
+		friendsData: getFollowedUsers(state),
 	} 
   }
-  let mapDispatchToProps=(dispatch)=>{
+  let mapDispatchToProps=()=>{
 	return{
 	
 	}

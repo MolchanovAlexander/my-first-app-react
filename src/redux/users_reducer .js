@@ -8,9 +8,11 @@ const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
 const TOGGLE_IS_FOLLOWING = "TOGGLE_IS_FOLLOWING";
+const SET_FOLLOWED_USERS = "SET_FOLLOWED_USERS"
 
 let initialState = {
   users: [],
+  followed:[],
   pageSize: 100,
   totalUsersCount: 0,
   currentPage: 1,
@@ -36,6 +38,9 @@ const usersReducer = (state = initialState, action) => {
       };
     case SET_USERS: {
       return { ...state, users: action.users };
+    }
+    case SET_FOLLOWED_USERS: {
+      return { ...state, followed: action.users };
     }
     case SET_TOTAL_USERS_COUNT: {
       return {
@@ -74,6 +79,7 @@ const usersReducer = (state = initialState, action) => {
 export const follow = (userID) => ({ type: FOLLOW, userID });
 export const unfollow = (userID) => ({ type: UNFOLLOW, userID });
 export const setUsers = (users) => ({ type: SET_USERS, users: users });
+export const setFollowedUsers = (users) => ({ type: SET_FOLLOWED_USERS, users: users });
 export const setCurrentPage = (currentPage, fromCount, toCount) => ({
   type: SET_CURRENT_PAGE,
   currentPage: currentPage,
@@ -100,6 +106,16 @@ export const getUsersThunkCreator = (currentPage, pageSize) => {
     let data = await usersAPI.getUsers(currentPage, pageSize)
     dispatch(setUsersTotalCount(data.totalCount));
     dispatch(setUsers(data.items));
+    dispatch(setIsFetching(false));
+   
+  };
+};
+export const getFollowedUsersThunkCreator = ( pageSize = 100) => {
+  return async (dispatch) => {
+    dispatch(setIsFetching(true));
+
+    let data = await usersAPI.getFollowedUsers(pageSize)
+    dispatch(setFollowedUsers(data.items));
     dispatch(setIsFetching(false));
     console.log(data);
   };

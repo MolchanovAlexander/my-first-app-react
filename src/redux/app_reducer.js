@@ -1,4 +1,5 @@
 import { getAuthUserData } from "./auth_reducer";
+import { getFollowedUsersThunkCreator } from "./users_reducer ";
 
 
 const INITIALIZED_SUCCESS = "INITIALIZED_SUCCESS";
@@ -24,7 +25,7 @@ export const initializedSuccess = () => ({ type: INITIALIZED_SUCCESS });
 export const initializedApp = () => (dispatch) => {
 
 	let promise = dispatch(getAuthUserData())
-	//let promise1 = dispatch(getUserProfile())
+	//let promise1 = getFollowedUsersThunkCreator()
 	Promise.all([promise])
 	.then(()=>{
 		dispatch(initializedSuccess())

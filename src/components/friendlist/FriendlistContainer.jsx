@@ -1,21 +1,17 @@
 import Friendlist from "components/friendlist/Friendlist";
 import { connect } from "react-redux";
-import { getUsers, getIsFetching } from "redux/users_seelectors";
-import { getUsersThunkCreator } from "redux/users_reducer ";
+import { getFollowedUsers, getIsFetching } from "redux/users_seelectors";
 
- //const FriendlistContainer = (props) => {
- 	//return <Friendlist friendsData={props.friendsData} isFetching={props.isFetching} />
- //}
 let mapStateToProps = (state) => {
 	return {
-		friendsData: getUsers(state),
+		friendsData: getFollowedUsers(state),
 		isFetching: getIsFetching(state),
 	}
 }
 let mapDispatchToProps = () => {
 	return {
-		requestUsers: getUsersThunkCreator,
+		
 	}
 }
-const FriendlistContainer = connect(mapStateToProps, {requestUsers: getUsersThunkCreator,})(Friendlist)
+const FriendlistContainer = connect(mapStateToProps, mapDispatchToProps)(Friendlist)
 export default FriendlistContainer;

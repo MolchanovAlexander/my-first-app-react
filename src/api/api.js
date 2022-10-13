@@ -16,6 +16,13 @@ export const usersAPI = {
         return response.data;
       });
   },
+  getFollowedUsers: (pageSize) => {
+    return instance
+      .get(`/users?friend=true&count=${pageSize}`)
+      .then((response) => {
+        return response.data;
+      });
+  },
   follow: (userID) => {
     return instance.post(`/follow/${userID}`).then((response) => {
       return response.data;

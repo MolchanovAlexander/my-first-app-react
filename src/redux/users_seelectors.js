@@ -36,3 +36,6 @@ export const getToCount = (state) =>{
 export const getFollowingRun = (state) =>{
   return state.usersPage.followingRun
 }
+export const getFollowedUsers = (state) =>{
+  return state.usersPage.followed
+}
