@@ -1,5 +1,9 @@
+
 .description{
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
 }
 .main img{
   padding-bottom: 20px;

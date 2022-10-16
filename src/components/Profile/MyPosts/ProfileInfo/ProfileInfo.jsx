@@ -2,10 +2,17 @@ import Preloader from "components/preloader/Preloader";
 import React from "react";
 import s from "./ProfileInfo.module.css";
 import userPhoto from "../../../../assets/images/1png.png";
-import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
+import { ProfileStatusWithHooks } from "./ProfileStatusWithHooks";
 
-const ProfileInfo1 = (props) => {
-  
+
+const ProfileInfo = (props) => {
+
+  const onMainPhotoSelected = (e) => {
+    if (e.target.files.length) {
+      props.savePhoto(e.target.files[0])
+    }
+  }
+  console.log(props);
   if (!props.profile) {
     return <Preloader />;
   }
@@ -22,6 +29,9 @@ const ProfileInfo1 = (props) => {
           }
           alt="user photo"
         />
+        {props.isOwner && (props.autorisedId == props.profile.userId) && <input value={undefined} type={"file"} onChange={onMainPhotoSelected} />}
+
+
         <br></br> Name: {props.profile.fullName} <br></br> id:
         {props.profile.userId}
         <br></br>{" "}
@@ -29,6 +39,9 @@ const ProfileInfo1 = (props) => {
         <br></br> contacts FB:{props.profile.contacts.facebook}
         <br></br> contacts IG:{props.profile.contacts.instagram}
         <ProfileStatusWithHooks
+          autorisedId = {props.autorisedId}
+          profile = {props.profile}
+          isOwner={props.isOwner}
           status={props.status}
           updateStatus={props.updateStatus}
         />
@@ -36,4 +49,4 @@ const ProfileInfo1 = (props) => {
     </div>
   );
 };
-export const ProfileInfo = React.memo(ProfileInfo1);
+export default ProfileInfo

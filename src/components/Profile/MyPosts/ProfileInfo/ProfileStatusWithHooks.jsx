@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState} from "react";
 
 const ProfileStatusWithHooks1 = (props) => {
- 
+ console.log(props);
   let [editMode, setEditMode] = useState(false)
   let [status, setStatus] = useState(props.status)
   useEffect(()=>{
@@ -18,7 +18,7 @@ const ProfileStatusWithHooks1 = (props) => {
     setStatus(e.currentTarget.value)
   };
   const activateMode = () => {
-    setEditMode(true)
+    props.isOwner && (props.autorisedId == props.profile.userId) ? setEditMode(true): null
   }
   const deactivateEditMode = () => {
     setEditMode(false)

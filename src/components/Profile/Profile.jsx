@@ -1,14 +1,14 @@
 import React from "react";
-import {ProfileInfo} from "./MyPosts/ProfileInfo/ProfileInfo";
+import ProfileInfo from "./MyPosts/ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 const Profile = props => {
-  console.log('render');
+  console.log(props);
   return (
     <div>
-      <ProfileInfo profile={props.profile} status={props.status} updateStatus = {props.updateStatus}/>
+      <ProfileInfo autorisedId = {props.autorisedUserID} savePhoto = {props.savePhoto} isOwner={props.isOwner} profile={props.profile} status={props.status} updateStatus = {props.updateStatus}/>
       <MyPostsContainer  />
     </div>
   );
 };
-export const ProfileMemo = React.memo(Profile);
+export default Profile
