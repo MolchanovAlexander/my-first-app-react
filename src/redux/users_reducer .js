@@ -148,37 +148,5 @@ export const unfollowSuccess = (userID) => {
   };
 };
 
-// export const stepCountChange = (way) => {
-//     let from = state.fromCount;
-//     let to = state.toCount;
-
-//     // 0 - toStart / 1 - previous / 2 - next / 3 - toLast
-//     let goStart = way === 0 && from > 1;
-//     let goPrev = way === 1 && from > 1;
-//     let goNext = way === 2 && to < pagesCount;
-//     let goLast = way === 3 && to < pagesCount;
-
-//     if (goLast) {
-//       from = tlastPageFromCount;
-//       to = pagesCount;
-//       setCurrentPage(from, from, to);
-// 	  getUsersThunkCreator(from, pageSize );
-//     } else if (goNext) {
-//       from = from + step;
-//       to = to + step;
-//       setCurrentPage(from, from, to);
-// 	  getUsersThunkCreator(from, pageSize );
-//     } else if (goPrev) {
-//       from = from - step;
-//       to = from + step - 1;
-//       setCurrentPage(to, from, to);
-// 	  getUsersThunkCreator(from, pageSize );
-//     } else if (goStart) {
-//       from = 1;
-//       to = step;
-//       setCurrentPage(from, from, to);
-// 	  getUsersThunkCreator(from, pageSize );
-//     }
-//   };
 
 export default usersReducer;
