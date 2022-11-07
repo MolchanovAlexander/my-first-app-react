@@ -117,7 +117,7 @@ export const getFollowedUsersThunkCreator = ( pageSize = 100) => {
     let data = await usersAPI.getFollowedUsers(pageSize)
     dispatch(setFollowedUsers(data.items));
     dispatch(setIsFetching(false));
-    console.log(data);
+    //console.log(data);
   };
 };
 const followUnfollowFlow = async (dispatch, userID, apiMethod, actionCreator) => {

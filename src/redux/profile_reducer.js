@@ -42,7 +42,7 @@ const profileReducer = (state = initialState, action) => {
         //postsData: [...state.postsData, {...post, likeCount: action.body.likeCount}]
         postsData: [...state.postsData.filter(p => p.id !== action.body.id), post]
       };
-    case SET_USER_PROFILE: console.log(action);
+    case SET_USER_PROFILE:
       return { ...state, profile: { ...action.profile } };
     case SET_PHOTO_SUCCESS:
 
@@ -92,13 +92,24 @@ export const savePhoto = (file) => async (dispatch) => {
 export const saveProfile = (profile) => async (dispatch, getState) => {
   const userId = getState().auth.userId
   const response = await profileAPI.saveProfile(profile)
-  console.log(response);
+  let obj = {};
+  let errorsResponse = Object.values(response.data.messages)
+  let contactNames = []
+  let dataMessages = []
+  let i = 0;
+  for (i in errorsResponse) {
+    contactNames.push((errorsResponse[i].slice(errorsResponse[i].indexOf('>') + 1, errorsResponse[i].indexOf(')'))).toLowerCase())
+  }
+  let v = 0
+  for (v = 0; v < errorsResponse.length; v++) {
+    dataMessages.push([contactNames[v], errorsResponse[v]])
+  }
+  obj["contacts"] = Object.fromEntries(dataMessages)
   if (response.data.resultCode === 0) dispatch(getUserProfile(userId));
   else {
-		let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error"
-		//dispatch(stopSubmit("edit_profile", { _error: message })) //need to find all errors
-    dispatch(stopSubmit("edit_profile", { "contacts":{"website":message}  }))
-    return Promise.reject(response.data.messages[0])
-	}
+    dispatch(stopSubmit("edit_profile", obj))
+    return Promise.reject()
+  }
 };
+
 export default profileReducer;
