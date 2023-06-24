@@ -1,5 +1,4 @@
 import { getAuthUserData } from "./auth_reducer";
-import { getFollowedUsersThunkCreator } from "./users_reducer ";
 
 
 const INITIALIZED_SUCCESS = "INITIALIZED_SUCCESS";

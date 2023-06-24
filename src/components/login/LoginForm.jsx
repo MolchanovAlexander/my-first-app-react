@@ -3,13 +3,15 @@ import React from "react";
 import { reduxForm, Field } from "redux-form";
 import { required } from "utils/validators/validators";
 import style from "./Login.module.css"
-const LoginForm = ({ handleSubmit, error }) => {
+const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
   return (
     <form onSubmit={handleSubmit} action="">
       {CreateField("email", "email", [required], Input)}
-      {CreateField("Password", "password", [required], Input,{type:"password"})}
-      {CreateField(null, "rememberMe", undefined, Input,{type:"checkbox"}, 'remember me')}
-     
+      {CreateField("Password", "password", [required], Input, { type: "password" })}
+      {CreateField(null, "rememberMe", undefined, Input, { type: "checkbox" }, 'remember me')}
+      {captchaUrl && <img src={captchaUrl} />}
+      {captchaUrl && CreateField("symbols from image", "captcha", [required], Input, {})}
+      
       {error ? <div className={style.formSummaryError}>
         {error}
       </div> : ''}

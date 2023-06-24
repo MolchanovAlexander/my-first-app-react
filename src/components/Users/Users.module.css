@@ -36,11 +36,12 @@
 .users{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     border-radius: 25%;
     max-width: 200px;
     min-width: 200px;
+    max-height: 200px;
     overflow: hidden;
     border: 1px solid black;
     

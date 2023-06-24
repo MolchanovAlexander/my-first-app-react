@@ -94,15 +94,11 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
   const response = await profileAPI.saveProfile(profile)
   let obj = {};
   let errorsResponse = Object.values(response.data.messages)
-  let contactNames = []
-  let dataMessages = []
-  let i = 0;
-  for (i in errorsResponse) {
-    contactNames.push((errorsResponse[i].slice(errorsResponse[i].indexOf('>') + 1, errorsResponse[i].indexOf(')'))).toLowerCase())
-  }
-  let v = 0
-  for (v = 0; v < errorsResponse.length; v++) {
-    dataMessages.push([contactNames[v], errorsResponse[v]])
+  let dataMessages = new Map()
+
+  for (let v in errorsResponse) {
+    // set to map the names of contacts and errors
+    dataMessages.set((errorsResponse[v].slice(errorsResponse[v].indexOf('>') + 1, errorsResponse[v].indexOf(')'))).toLowerCase(), errorsResponse[v])
   }
   obj["contacts"] = Object.fromEntries(dataMessages)
   if (response.data.resultCode === 0) dispatch(getUserProfile(userId));
