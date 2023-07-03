@@ -8,8 +8,9 @@ import {
   setUsersTotalCount,
   setFollowingRun,
   getUsersThunkCreator,
-  unfollowSuccess,
-  followSuccess
+  getFollowedUsersThunkCreator,
+  following,
+  
 
 } from "redux/users_reducer ";
 import React from "react";
@@ -34,6 +35,9 @@ import {
 class UsersContainer extends React.Component {
   componentDidMount() {
     this.props.requestUsers(this.props.currentPage, this.props.pageSize);
+  }
+  componentDidUpdate() {
+   // this.props.getFollowedUsersThunkCreator(120)
   }
 
   onPageChanged = (pageNumber, fromCount, toCount) => {
@@ -89,8 +93,8 @@ class UsersContainer extends React.Component {
           unfollow={this.props.unfollow}
           setFollowingRun={this.props.setFollowingRun}
           followingRun={this.props.followingRun}
-          unfollowSuccess={this.props.unfollowSuccess}
-          followSuccess={this.props.followSuccess}
+          following={this.props.following}
+          
 
         />
       </>
@@ -143,8 +147,9 @@ export default compose(
       setUsersTotalCount,
       setIsFetching,
       setFollowingRun,
-      followSuccess,
-      unfollowSuccess,
+      following,
+      
+      getFollowedUsersThunkCreator,
       requestUsers: getUsersThunkCreator,
     }
   )

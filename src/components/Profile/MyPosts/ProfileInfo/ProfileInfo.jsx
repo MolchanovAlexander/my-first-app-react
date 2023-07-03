@@ -61,7 +61,8 @@ const ProfileInfo = (props) => {
             ? <ProfileDataForm
               onSubmit={onSubmit}
               initialValues={props.profile}
-              profile={props.profile} />
+              profile={props.profile}
+              goToEditMode={() => { setEditMode(false) }} />
             : <ProfileData
               profile={props.profile}
               isOwner={props.isOwner}

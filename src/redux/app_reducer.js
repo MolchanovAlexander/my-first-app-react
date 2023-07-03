@@ -24,7 +24,7 @@ export const initializedSuccess = () => ({ type: INITIALIZED_SUCCESS });
 export const initializedApp = () => (dispatch) => {
 
 	let promise = dispatch(getAuthUserData())
-	//let promise1 = getFollowedUsersThunkCreator()
+	
 	Promise.all([promise])
 	.then(()=>{
 		dispatch(initializedSuccess())

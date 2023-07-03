@@ -3,10 +3,10 @@ import React from "react"
 import { reduxForm } from "redux-form"
 import s from "./ProfileInfo.module.css";
 
-const ProfileDataForm = ({ handleSubmit, profile, error }) => {
+const ProfileDataForm = ({ handleSubmit, profile, error ,goToEditMode}) => {
     return (
         <form onSubmit={handleSubmit}>
-            <div> <button >save</button> </div>
+            <div> <button >save</button><button onClick={goToEditMode}>cancel</button> </div>
             {error
                 ? <div className={s.formSummaryError}>
                     {error}

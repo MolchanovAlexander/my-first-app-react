@@ -21,9 +21,15 @@ import { getFollowedUsersThunkCreator } from "redux/users_reducer ";
 
 
 class App extends React.Component {
+    catchAllUnhandledErrors =(promiseRejectionEvent)=>{
+        alert(promiseRejectionEvent)
+    }
     componentDidMount() {
         this.props.initializedApp()
-        this.props.getFollowedUsersThunkCreator()
+       // window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors)
+    }
+    componentWillUnmount(){
+       // window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors)
     }
 
    render() { 

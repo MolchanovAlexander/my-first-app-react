@@ -3,7 +3,7 @@ import React from "react"
 
 export const MappingComponentsArray = (items,
 	 stylesUser,stylesPhoto,userPhoto,
-	  styleFollow = null, followingRun = null,unfollowSuccess = null,followSuccess = null) => {
+	  styleFollow = null, followingRun = null,following = null) => {
     
 	return items.map((u) => (
 		<div key={u.id} className = {stylesUser}>
@@ -21,7 +21,7 @@ export const MappingComponentsArray = (items,
 			  {followingRun !=null ? (u.followed  ? (
 				<button className={styleFollow} disabled={followingRun.some(id => id === u.id)}
 				  onClick={() => {
-					unfollowSuccess(u.id)
+					following(u.id, false)
 				  }}
 				>
 				  UNFOLLOW
@@ -29,7 +29,7 @@ export const MappingComponentsArray = (items,
 			  ) : (
 				<button disabled={followingRun.some(id => id === u.id)}
 				  onClick={() => {
-					  followSuccess(u.id)
+					  following(u.id,true)
 				  }}
 				>
 				  FOLLOW

@@ -80,8 +80,12 @@ export const getUserStatus = (userID) => async (dispatch) => {
   dispatch(setStatus(response.data))
 };
 export const updateStatus = (status) => async (dispatch) => {
-  const response = await profileAPI.updateStatus(status)
-  if (response.data.resultCode === 0) dispatch(setStatus(status));
+  try {
+    const response = await profileAPI.updateStatus(status)
+    if (response.data.resultCode === 0) dispatch(setStatus(status));
+  } catch (error) {
+
+  }
 };
 export const savePhoto = (file) => async (dispatch) => {
   const response = await profileAPI.savePhoto(file)
@@ -100,6 +104,7 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
     // set to map the names of contacts and errors
     dataMessages.set((errorsResponse[v].slice(errorsResponse[v].indexOf('>') + 1, errorsResponse[v].indexOf(')'))).toLowerCase(), errorsResponse[v])
   }
+  // obj.contacts contains object maked from map with errors it is needed for stopSubmit of redux form
   obj["contacts"] = Object.fromEntries(dataMessages)
   if (response.data.resultCode === 0) dispatch(getUserProfile(userId));
   else {

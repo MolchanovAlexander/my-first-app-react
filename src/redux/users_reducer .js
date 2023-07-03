@@ -12,7 +12,7 @@ const SET_FOLLOWED_USERS = "SET_FOLLOWED_USERS"
 
 let initialState = {
   users: [],
-  followed:[],
+  followed: [],
   pageSize: 100,
   totalUsersCount: 0,
   currentPage: 1,
@@ -29,17 +29,18 @@ const usersReducer = (state = initialState, action) => {
     case FOLLOW:
       return {
         ...state,
-        users: updateObjectInArray(state.users, action.userID,"id",{followed: true})
+        users: updateObjectInArray(state.users, action.userID, "id", { followed: true })
       };
     case UNFOLLOW:
       return {
         ...state,
-        users: updateObjectInArray(state.users, action.userID,"id",{followed: false})
+        users: updateObjectInArray(state.users, action.userID, "id", { followed: false })
       };
     case SET_USERS: {
       return { ...state, users: action.users };
     }
     case SET_FOLLOWED_USERS: {
+
       return { ...state, followed: action.users };
     }
     case SET_TOTAL_USERS_COUNT: {
@@ -71,9 +72,11 @@ const usersReducer = (state = initialState, action) => {
           : state.followingRun.filter((id) => id != action.userID),
       };
     }
+
     default:
       return state;
   }
+
 };
 
 export const follow = (userID) => ({ type: FOLLOW, userID });
@@ -107,46 +110,44 @@ export const getUsersThunkCreator = (currentPage, pageSize) => {
     dispatch(setUsersTotalCount(data.totalCount));
     dispatch(setUsers(data.items));
     dispatch(setIsFetching(false));
-   
+
   };
 };
-export const getFollowedUsersThunkCreator = ( pageSize = 100) => {
+export const getFollowedUsersThunkCreator = (pageSize = 100) => {
+
   return async (dispatch) => {
     dispatch(setIsFetching(true));
 
     let data = await usersAPI.getFollowedUsers(pageSize)
     dispatch(setFollowedUsers(data.items));
     dispatch(setIsFetching(false));
-    //console.log(data);
+    console.log(data);
   };
 };
 const followUnfollowFlow = async (dispatch, userID, apiMethod, actionCreator) => {
 
   dispatch(setFollowingRun(true, userID));
   let data = await apiMethod(userID)
+  // let data2 = await usersAPI.getFollowedUsers(110)
+  // data2.items ? dispatch(setFollowedUsers(data2.items)) : null 
 
   if (data.resultCode == 0) {
     dispatch(actionCreator(userID))
   }
+ 
   dispatch(setFollowingRun(false, userID));
+  
 };
 
-export const followSuccess = (userID) => {
+export const following = (userID, isFollow) => {
   return async (dispatch) => {
-    let apiMethod = usersAPI.follow.bind(usersAPI)
-    let actionCreator = follow
+    let apiMethod = isFollow ? usersAPI.follow.bind(usersAPI) : usersAPI.unfollow.bind(usersAPI)
+    let actionCreator = isFollow ? follow : unfollow
 
     followUnfollowFlow(dispatch, userID, apiMethod, actionCreator)
+    getFollowedUsersThunkCreator()
   };
 }
-export const unfollowSuccess = (userID) => {
-  return async (dispatch) => {
-    let apiMethod = usersAPI.unfollow.bind(usersAPI)
-    let actionCreator = unfollow
-
-    followUnfollowFlow(dispatch, userID, apiMethod, actionCreator)
-  };
-};
 
 
 export default usersReducer;

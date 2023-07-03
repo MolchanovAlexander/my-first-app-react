@@ -6,8 +6,8 @@ import { MappingComponentsArray } from "utils/mappingComponentHelper";
 
 let Users = ({ users, totalUsersCount, pageSize,
 	fromCount, toCount, stepCountChange,
-	currentPage, onPageChanged, unfollowSuccess
-	, followSuccess, followingRun }) => {
+	currentPage, onPageChanged, following
+	,  followingRun }) => {
 
 	let pages = [];
 	let pagesCount = Math.ceil(totalUsersCount / pageSize);
@@ -44,7 +44,7 @@ let Users = ({ users, totalUsersCount, pageSize,
 			<div className={styles.body_users}>
 				{MappingComponentsArray(users, styles.users, styles.userPhoto,
 					userPhoto, styles.followedButton,
-					followingRun, unfollowSuccess, followSuccess)}
+					followingRun, following)}
 			</div>
 		</div>
 	);

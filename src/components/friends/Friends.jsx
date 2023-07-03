@@ -5,10 +5,11 @@ import userPhoto from "../../assets/images/1png.png";
 
 
 const Friends = (props) => {
+  console.log(props);
   let amount = props.friendsData.slice(0, 6)
   return (
 
-    <div>
+    <div>{props.followingRun.length}
       <div>
         <br></br>
         <div className={s.wrapFriends}>

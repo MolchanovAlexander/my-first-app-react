@@ -5,7 +5,7 @@ import { getUserProfile, setUserProfile,saveProfile, getUserStatus, updateStatus
 import { withRouter } from "react-router";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect"
 import { compose } from "redux";
-
+import { getFollowedUsersThunkCreator } from "redux/users_reducer ";
 
 class ProfileContainer extends React.Component {
 	//isOwner= false
@@ -19,6 +19,8 @@ class ProfileContainer extends React.Component {
 	}
 	componentDidMount() {
 		this.refreshprofile()
+		this.props.getFollowedUsersThunkCreator()
+
 	}
 	componentDidUpdate(prevProps, prevState, snapshot) {
 		this.props.match.params.userId != prevProps.match.params.userId ?
@@ -49,7 +51,7 @@ let mapStateToProps = (state) => ({
 //console.log(state.profile);
 
 export default compose(
-	connect(mapStateToProps, { setUserProfile, getUserProfile, getUserStatus,saveProfile, updateStatus, savePhoto }),
+	connect(mapStateToProps, { getFollowedUsersThunkCreator, setUserProfile, getUserProfile, getUserStatus,saveProfile, updateStatus, savePhoto }),
 	withRouter,
 	withAuthRedirect
 )(ProfileContainer)

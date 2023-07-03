@@ -37,5 +37,6 @@ export const getFollowingRun = (state) =>{
   return state.usersPage.followingRun
 }
 export const getFollowedUsers = (state) =>{
+  console.log(state.usersPage)
   return state.usersPage.followed
 }
